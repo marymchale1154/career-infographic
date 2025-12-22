@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mary McHale - Senior HR Business Partner</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://cdn.plot.ly/plotly-2.24.1.min.js"></script>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gh_bg: '#0d1117',      // GitHub Main Background
+                        gh_card: '#161b22',    // GitHub Card Background
+                        gh_border: '#30363d',  // GitHub Border
+                        gh_blue: '#58a6ff',    // GitHub Blue Accent
+                        gh_text: '#c9d1d9',    // GitHub Primary Text
+                        gh_dim: '#8b949e',     // GitHub Dimmed Text
+                        gh_green: '#238636'    // GitHub Green
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d1117; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #30363d; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #58a6ff; 
+        }
+
+        /* Animation Classes */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+        
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Timeline vertical line */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 15px;
+            width: 2px;
+            background: #30363d;
+            z-index: 0;
+        }
+
+        /* Leaflet Popup Customization to match Dark Theme */
+        .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+            background: #161b22;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+        }
+        .leaflet-container a.leaflet-popup-close-button {
+            color: #8b949e;
+        }
+    </style>
+</head>
+<body class="bg-gh_bg text-gh_text font-sans antialiased selection:bg-gh_blue selection:text-white">
+
+    <div class="max-w-6xl mx-auto px-6 py-12">
+
+        <header class="fade-in-section mb-12 border-b border-gh_border pb-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight mb-2">Mary McHale</h1>
+                    <h2 class="text-xl md:text-2xl text-gh_blue font-medium mb-4">Senior HR Business Partner | Workforce Strategist | HR Systems & Analytics Expert</h2>
+                    
+                    <div class="flex flex-wrap gap-4 text-gh_dim text-sm">
+                        <a href="https://www.google.com/maps/place/LaGrange,+GA" target="_blank" class="flex items-center gap-2 hover:text-gh_blue transition">
+                            <i class="fas fa-map-marker-alt"></i> LaGrange, GA
+                        </a>
+
+                        <a href="tel:+17066687733" class="flex items-center gap-2 hover:text-gh_blue transition">
+                            <i class="fas fa-phone"></i> (706) 668-7733
+                        </a>
+                        
+                        <a href="mailto:marymchale1154@gmail.com" class="flex items-center gap-2 hover:text-gh_blue transition"><i class="fas fa-envelope"></i> marymchale1154@gmail.com</a>
+                        <a href="https://www.linkedin.com/in/marytmchale" target="_blank" class="flex items-center gap-2 hover:text-gh_blue transition"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+                    </div>
+
+                </div>
+                
+                <div class="bg-gh_card border border-gh_border p-4 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <span class="block text-3xl font-bold text-white">20+</span>
+                        <span class="text-xs text-gh_dim uppercase tracking-wider">Years Experience</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="fade-in-section bg-gh_card border border-gh_border rounded-lg p-6 shadow-sm mb-12">
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <i class="fas fa-user-tie text-gh_blue"></i> Professional Summary
+            </h3>
+            <p class="text-gh_text leading-relaxed">
+                Strategic HR leader with over 20 years of experience partnering with senior executives to drive business performance and organizational effectiveness in complex, large-scale environments.
+                Expert in compensation data modeling and incentive planning, utilizing Generative AI and advanced analytics to optimize workforce costs and retention.
+                Proven success in organizational design and change management, guiding leadership teams through transformation to align talent strategy with core business goals.
+            </p>
+        </section>
+
+        <section class="fade-in-section mb-16">
+            <h3 class="text-xl font-bold text-white mb-6 border-b border-gh_border pb-2">Core Competencies</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <div class="bg-gh_card border border-gh_border rounded-lg p-5">
+                    <h4 class="text-gh_blue font-bold mb-4 flex items-center gap-2"><i class="fas fa-chess"></i> Strategic HR</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs mb-1"><span class="text-white">Org Design & Restructuring</span><span class="text-gh_dim">Expert</span></div>
+                            <div class="w-full bg-gh_border rounded-full h-2"><div class="bg-gh_blue h-2 rounded-full" style="width: 95%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1"><span class="text-white">Compensation & Incentives</span><span class="text-gh_dim">Expert</span></div>
+                            <div class="w-full bg-gh_border rounded-full h-2"><div class="bg-gh_blue h-2 rounded-full" style="width: 90%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1"><span class="text-white">Change Management</span><span class="text-gh_dim">Advanced</span></div>
+                            <div class="w-full bg-gh_border rounded-full h-2"><div class="bg-gh_blue h-2 rounded-full" style="width: 85%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gh_card border border-gh_border rounded-lg p-5">
+                    <h4 class="text-gh_blue font-bold mb-4 flex items-center gap-2"><i class="fas fa-chart-line"></i> Data & Analytics</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs mb-1"><span class="text-white">Workforce Analytics</span><span class="text-gh_dim">Expert</span></div>
+                            <div class="w-full bg-gh_border rounded-full h-2"><div class="bg-gh_green h-2 rounded-full" style="width: 90%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1"><span class="text-white">Excel (Pivot, VLOOKUP)/Google Sheets</span><span class="text-gh_dim">Expert</span></div>
+                            <div class="w-full bg-gh_border rounded-full h-2"><div class="bg-gh_green h-2 rounded-full" style="width: 95%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1"><span class="text-white">Data Modeling</span><span class="text-gh_dim">Advanced</span></div>
+                            <div class="w-full bg-gh_border rounded-full h-2"><div class="bg-gh_green h-2 rounded-full" style="width: 85%"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gh_card border border-gh_border rounded-lg p-5">
+                    <h4 class="text-gh_blue font-bold mb-4 flex items-center gap-2"><i class="fas fa-microchip"></i> HR Technology</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs mb-1"><span class="text-white">Generative AI (Gemini)</span><span class="text-gh_dim">Advanced</span></div>
+                            <div class="w-full bg-gh_border rounded-full h-2"><div class="bg-purple-500 h-2 rounded-full" style="width: 90%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1"><span class="text-white">Workday HCM</span><span class="text-gh_dim">Advanced</span></div>
+                            <div class="w-full bg-gh_border rounded-full h-2"><div class="bg-purple-500 h-2 rounded-full" style="width: 90%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1"><span class="text-white">PeopleSoft/Oracle</span><span class="text-gh_dim">Expert</span></div>
+                            <div class="w-full bg-gh_border rounded-full h-2"><div class="bg-purple-500 h-2 rounded-full" style="width: 95%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <div class="lg:col-span-7 space-y-12">
+                <section class="fade-in-section">
+                    <h3 class="text-2xl font-bold text-white mb-8 border-b border-gh_border pb-2">Experience</h3>
+                    
+                    <div class="relative timeline-line pl-4 space-y-10">
+                        
+                        <div class="relative pl-8">
+                            <div class="absolute left-0 top-1 w-8 h-8 bg-gh_blue rounded-full border-4 border-gh_bg flex items-center justify-center z-10">
+                                <i class="fas fa-briefcase text-gh_bg text-xs"></i>
+                            </div>
+                            <div class="bg-gh_card border border-gh_border rounded-lg p-6 hover:border-gh_blue transition duration-300">
+                                <div class="flex flex-col md:flex-row justify-between md:items-start mb-2">
+                                    <h4 class="text-xl font-bold text-white">Sr. Manager - HR Business Partner</h4>
+                                    <span class="text-sm text-gh_blue font-mono bg-gh_border px-2 py-1 rounded">Jul 2021 – Dec 2025</span>
+                                </div>
+                                <p class="text-gh_dim mb-4 italic">Verizon Communications | Ellicott City, MD (Remote/Hybrid)</p>
+                                <ul class="list-disc list-outside ml-4 space-y-2 text-sm">
+                                    <li> Served as Strategic HR Partner for a high-volume business unit of <strong>8,000+ employees</strong>.</li>
+                                    <li> Orchestrated a workforce ramp-up, partnering with Ops to successfully hire and onboard <strong>3,500+ front-line associates</strong>.</li>
+                                    <li> Selected as HR Lead for executive-led 'Culture Alliance,' designing engagement strategies that increased retention.</li>
+                                    <li> Engineered flexible compensation tools leveraging <strong>Advanced Excel & Google Sheets</strong> to model variable pay scenarios.</li>
+                                    <li> Acted as Change Champion for Workday implementation, performing User Acceptance Testing (UAT).</li>
+                                    <li> Directed strategic workforce planning and organizational restructuring, executing complex surplus declarations.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="relative pl-8">
+                            <div class="absolute left-0 top-1 w-8 h-8 bg-gh_border rounded-full border-4 border-gh_bg flex items-center justify-center z-10">
+                                <i class="fas fa-history text-gh_dim text-xs"></i>
+                            </div>
+                            <div class="bg-gh_card border border-gh_border rounded-lg p-6 hover:border-gh_blue transition duration-300">
+                                <div class="flex flex-col md:flex-row justify-between md:items-start mb-2">
+                                    <h4 class="text-lg font-bold text-white">Manager - HR Business Partner</h4>
+                                    <span class="text-sm text-gh_dim font-mono bg-gh_border px-2 py-1 rounded">Mar 2019 – Jul 2021</span>
+                                </div>
+                                <p class="text-gh_dim mb-4 italic">Verizon Communications</p>
+                                <ul class="list-disc list-outside ml-4 space-y-2 text-sm">
+                                    <li> Presented data-driven HR initiatives to Executive Leadership, translating metrics into actionable strategies.</li>
+                                    <li> Managed complex workplace investigations and coached managers on compliance and conflict resolution.</li>
+                                    <li> Partnered with Labor Relations to foster positive union relationships for <strong>8,000+ union-represented</strong> employees.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="relative pl-8">
+                            <div class="absolute left-0 top-1 w-8 h-8 bg-gh_border rounded-full border-4 border-gh_bg flex items-center justify-center z-10">
+                                <i class="fas fa-history text-gh_dim text-xs"></i>
+                            </div>
+                            <div class="bg-gh_card border border-gh_border rounded-lg p-6 hover:border-gh_blue transition duration-300">
+                                <div class="flex flex-col md:flex-row justify-between md:items-start mb-2">
+                                    <h4 class="text-lg font-bold text-white">Specialist - HR Business Partner</h4>
+                                    <span class="text-sm text-gh_dim font-mono bg-gh_border px-2 py-1 rounded">Nov 2003 – Mar 2019</span>
+                                </div>
+                                <p class="text-gh_dim mb-4 italic">Verizon Communications</p>
+                                <ul class="list-disc list-outside ml-4 space-y-2 text-sm">
+                                    <li> Leveraged data to provide insights to leaders (turnover, time-to-fill, span ratios).</li>
+                                    <li> Collaborated closely with Employee Relations, Legal, Labor Relations, and Compensation COEs.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="lg:col-span-5 space-y-8">
+                
+                <div class="fade-in-section bg-gh_card border border-gh_border rounded-lg p-4 shadow-sm">
+                    <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider border-b border-gh_border pb-2">Regional Leadership Scope</h4>
+                    <div id="regionMap" class="w-full h-72 rounded border border-gh_border z-0"></div>
+                    <p class="text-xs text-gh_dim mt-2 text-center"><i class="fas fa-mouse-pointer"></i> Click markers for headcount details</p>
+                </div>
+
+                <div class="fade-in-section bg-gh_card border border-gh_border rounded-lg p-4 shadow-sm">
+                    <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider border-b border-gh_border pb-2">Impact Metrics</h4>
+                    <div id="impactChart" class="w-full h-64"></div>
+                    <p class="text-xs text-gh_dim mt-2 text-center">Key volume metrics from recent roles.</p>
+                </div>
+
+                <div class="fade-in-section bg-gh_card border border-gh_border rounded-lg p-6 shadow-sm">
+                    <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider border-b border-gh_border pb-2">Education</h4>
+                    <div class="mb-4">
+                        <div class="text-white font-bold"> M.S. Information Systems</div>
+                        <div class="text-gh_blue text-sm"> Univ. of Maryland, Baltimore County</div>
+                    </div>
+                    <div>
+                        <div class="text-white font-bold"> B.S. Information Systems Mgmt</div>
+                        <div class="text-gh_blue text-sm"> Univ. of Maryland, University College</div>
+                    </div>
+                </div>
+
+                <div class="fade-in-section bg-gh_card border border-gh_border rounded-lg p-6 shadow-sm">
+                    <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider border-b border-gh_border pb-2">Prior Roles</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-gh_green mt-1"></i>
+                            <div>
+                                <div class="text-sm text-white font-semibold">Supervisor - HRIS</div>
+                                <div class="text-xs text-gh_dim">Verizon Communications</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-gh_green mt-1"></i>
+                            <div>
+                                <div class="text-sm text-white font-semibold">Sr. Data Analyst - HRIS</div>
+                                <div class="text-xs text-gh_dim">Verizon Communications</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer class="mt-16 text-center text-gh_dim text-sm fade-in-section">
+            <p>&copy; 2025 Mary McHale. Gemini Generated based on resume data.</p>
+        </footer>
+
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Scroll Animation
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+
+            // ==========================================
+            // 2. Leaflet Map Logic (Updated to OSM)
+            // ==========================================
+            
+            // Initialize Map
+            var map = L.map('regionMap').setView([39.6, -76.0], 6);
+
+            // CHANGED: Using Standard OpenStreetMap Tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                maxZoom: 19
+            }).addTo(map);
+
+            // --- Configuration ---
+            const territoryConfig = {
+                "north": {
+                    states: ["New Jersey", "Pennsylvania", "Delaware"],
+                    color: "#58a6ff", 
+                    layerGroup: L.layerGroup().addTo(map) 
+                },
+                "south": {
+                    states: ["Maryland", "Virginia"],
+                    color: "#238636", 
+                    layerGroup: L.layerGroup().addTo(map)
+                }
+            };
+
+            // --- Work Territory Markers ---
+            
+            // North Marker
+            var northMarker = L.circleMarker([40.1, -75.1], {
+                color: '#58a6ff', fillColor: '#58a6ff', fillOpacity: 0.9, radius: 15, weight: 2
+            }).addTo(map);
+
+            northMarker.bindPopup(`
+                <div class="font-sans">
+                    <h5 class="font-bold text-white border-b border-gray-600 pb-1 mb-2">Mid-Atlantic North</h5>
+                    <ul class="text-xs space-y-1">
+                        <li><strong>States:</strong> NJ, PA, DE</li>
+                        <li><strong>Headcount:</strong> 4,535</li>
+                        <li><strong>Vice President (Ops):</strong> 1</li>
+                        <li><strong>Sr Director (Ops):</strong> 6</li>
+                        <li><strong>Sr Director (Engineering):</strong> 1</li>
+                        <li><strong>Managers (Ops):</strong> 263</li>
+                        <li><strong>Front Line/Technical (Ops):</strong> 4,272</li>
+                    </ul>
+                </div>
+            `);
+
+            // South Marker
+            var southMarker = L.circleMarker([39.0, -76.8], {
+                color: '#238636', fillColor: '#238636', fillOpacity: 0.9, radius: 15, weight: 2
+            }).addTo(map);
+
+            southMarker.bindPopup(`
+                <div class="font-sans">
+                    <h5 class="font-bold text-white border-b border-gray-600 pb-1 mb-2">Mid Atlantic South</h5>
+                    <ul class="text-xs space-y-1">
+                        <li><strong>States:</strong> MD, DC, VA</li>
+                        <li><strong>Headcount:</strong> 2,975</li>
+                        <li><strong>Vice President (Ops):</strong> 1</li>
+                        <li><strong>Sr Director (Ops):</strong> 4</li>
+                        <li><strong>Sr Director (Engineering):</strong> 1</li>
+                        <li><strong>Managers (Ops):</strong> 188</li>
+                        <li><strong>Front Line/Technical (Ops):</strong> 2,788</li>
+                    </ul>
+                </div>
+            `);
+
+            // --- Interaction Logic ---
+            function handleInteraction(regionKey, active) {
+                const activeConfig = territoryConfig[regionKey];
+                if (activeConfig.layerGroup) {
+                    activeConfig.layerGroup.eachLayer(layer => {
+                        layer.setStyle({
+                            fillOpacity: active ? 0.6 : 0.1, 
+                            weight: active ? 2 : 1
+                        });
+                    });
+                }
+                // Focus Effect
+                const otherKey = regionKey === 'north' ? 'south' : 'north';
+                const otherConfig = territoryConfig[otherKey];
+                if (otherConfig.layerGroup) {
+                    otherConfig.layerGroup.eachLayer(layer => {
+                        layer.setStyle({
+                            fillOpacity: active ? 0.05 : 0.1, 
+                            opacity: active ? 0.2 : 1 
+                        });
+                    });
+                }
+            }
+
+            // Events - North
+            northMarker.on('mouseover', () => { northMarker.openPopup(); handleInteraction('north', true); });
+            northMarker.on('mouseout',  () => { northMarker.closePopup(); handleInteraction('north', false); });
+            northMarker.on('click',     () => { map.flyToBounds(territoryConfig.north.layerGroup.getBounds(), {padding: [50,50]}); });
+
+            // Events - South
+            southMarker.on('mouseover', () => { southMarker.openPopup(); handleInteraction('south', true); });
+            southMarker.on('mouseout',  () => { southMarker.closePopup(); handleInteraction('south', false); });
+            southMarker.on('click',     () => { map.flyToBounds(territoryConfig.south.layerGroup.getBounds(), {padding: [50,50]}); });
+
+            // --- Load Shapes ---
+            fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json')
+                .then(response => {
+                    if (!response.ok) throw new Error("Network response was not ok");
+                    return response.json();
+                })
+                .then(data => {
+                    const allRelevantStates = [...territoryConfig.north.states, ...territoryConfig.south.states];
+                    const filteredFeatures = data.features.filter(f => allRelevantStates.includes(f.properties.name));
+
+                    L.geoJSON(filteredFeatures, {
+                        style: function(feature) {
+                            const isNorth = territoryConfig.north.states.includes(feature.properties.name);
+                            const color = isNorth ? territoryConfig.north.color : territoryConfig.south.color;
+                            return { color: color, fillColor: color, weight: 1, fillOpacity: 0.1 };
+                        },
+                        onEachFeature: function(feature, layer) {
+                            if (territoryConfig.north.states.includes(feature.properties.name)) {
+                                territoryConfig.north.layerGroup.addLayer(layer);
+                            } else {
+                                territoryConfig.south.layerGroup.addLayer(layer);
+                            }
+                        }
+                    });
+
+                    // Ensure markers stay on top
+                    northMarker.bringToFront();
+                    southMarker.bringToFront();
+                })
+                .catch(error => console.error("Error loading map data:", error));
+
+
+            // ==========================================
+            // 3. Plotly Chart
+            // ==========================================
+            const trace1 = {
+                x: ['Employees<br>Supported', 'Hires<br>Onboarded', 'Leaders<br>Advised'],
+                y: [8000, 3500, 550],
+                type: 'bar',
+                marker: { color: ['#238636', '#58a6ff', '#a371f7'] },
+                text: ['8,000+', '3,500+', '550+'],
+                textposition: 'auto',
+                hoverinfo: 'none'
+            };
+
+            const layout = {
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                font: { color: '#c9d1d9' },
+                margin: { t: 10, b: 40, l: 40, r: 10 },
+                xaxis: { showgrid: false, zeroline: false },
+                yaxis: { gridcolor: '#30363d', zerolinecolor: '#30363d', type: 'log', showticklabels: false },
+                showlegend: false
+            };
+
+            Plotly.newPlot('impactChart', [trace1], layout, {displayModeBar: false, responsive: true});
+        });
+    </script>
+
+           
+
+</body>
+</html>
+
