@@ -188,3 +188,141 @@
                                 <i class="fas fa-history text-gh_dim text-xs"></i>
                             </div>
                             <div class="bg-gh_card border border-gh_border rounded-lg p-6 hover:border-gh_blue transition duration-300">
+                                <div class="flex flex-col md:flex-row justify-between md:items-start mb-2">
+                                    <h4 class="text-lg font-bold text-white">Manager - HR Business Partner</h4>
+                                    <span class="text-sm text-gh_dim font-mono bg-gh_border px-2 py-1 rounded">2019 – 2021</span>
+                                </div>
+                                <p class="text-gh_dim mb-4 italic">Verizon Communications</p>
+                                <ul class="list-disc list-outside ml-4 space-y-2 text-sm">
+                                    <li>Presented data-driven people initiatives to Executive Leadership, translating metrics into actionable business strategies.</li>
+                                    <li>Managed complex workplace investigations and coached managers on effective conflict resolution.</li>
+                                    <li>**Labor Relations:** Partnered to address concerns for large union-represented workforces, minimizing risk.</li>
+                                    <li>**Workforce Budgeting:** Liaised with Finance to develop accurate budgets based on projected staffing needs.</li>
+                                    <li>**Volume Recruitment:** Collaborated with staffing partners to drive acquisition efforts aligned with critical schedules.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="relative pl-8">
+                            <div class="absolute left-0 top-1 w-8 h-8 bg-gh_border rounded-full border-4 border-gh_bg flex items-center justify-center z-10">
+                                <i class="fas fa-history text-gh_dim text-xs"></i>
+                            </div>
+                            <div class="bg-gh_card border border-gh_border rounded-lg p-6 hover:border-gh_blue transition duration-300">
+                                <div class="flex flex-col md:flex-row justify-between md:items-start mb-2">
+                                    <h4 class="text-lg font-bold text-white">Specialist - HR Business Partner</h4>
+                                    <span class="text-sm text-gh_dim font-mono bg-gh_border px-2 py-1 rounded">2003 – 2019</span>
+                                </div>
+                                <p class="text-gh_dim mb-4 italic">Verizon Communications</p>
+                                <ul class="list-disc list-outside ml-4 space-y-2 text-sm">
+                                    <li>Leveraged data to provide insights on key KPIs including turnover, time-to-fill, and span ratios.</li>
+                                    <li>Collaborated across HR COEs: Employee Relations, Ethics, Legal, and Talent Acquisition.</li>
+                                    <li>Conducted market research to benchmark availability for term employee headcount.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="lg:col-span-5 space-y-8">
+                
+                <div class="fade-in-section bg-gh_card border border-gh_border rounded-lg p-4 shadow-sm">
+                    <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider border-b border-gh_border pb-2">Regional Leadership Scope</h4>
+                    <div id="regionMap" class="w-full h-72 rounded border border-gh_border z-0"></div>
+                    <p class="text-xs text-gh_dim mt-2 text-center"><i class="fas fa-mouse-pointer"></i> Click markers for headcount details</p>
+                </div>
+
+                <div class="fade-in-section bg-gh_card border border-gh_border rounded-lg p-4 shadow-sm">
+                    <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider border-b border-gh_border pb-2">Impact Metrics</h4>
+                    <div id="impactChart" class="w-full h-64"></div>
+                    <p class="text-xs text-gh_dim mt-2 text-center">Key volume metrics from recent roles.</p>
+                </div>
+
+                <div class="fade-in-section bg-gh_card border border-gh_border rounded-lg p-6 shadow-sm">
+                    <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider border-b border-gh_border pb-2">Education</h4>
+                    <div class="mb-4">
+                        <div class="text-white font-bold"> M.S. Information Systems</div>
+                        <div class="text-gh_blue text-sm"> Univ. of Maryland, Baltimore County</div>
+                    </div>
+                    <div>
+                        <div class="text-white font-bold"> B.S. Information Systems Mgmt</div>
+                        <div class="text-gh_blue text-sm"> Univ. of Maryland, University College</div>
+                    </div>
+                </div>
+
+                <div class="fade-in-section bg-gh_card border border-gh_border rounded-lg p-6 shadow-sm">
+                    <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider border-b border-gh_border pb-2">Prior Specialist Focus</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-gh_green mt-1"></i>
+                            <div>
+                                <div class="text-sm text-white font-semibold">Supervisor - HRIS</div>
+                                <div class="text-xs text-gh_dim">Verizon Communications</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-gh_green mt-1"></i>
+                            <div>
+                                <div class="text-sm text-white font-semibold">Sr. Data Analyst - HRIS</div>
+                                <div class="text-xs text-gh_dim">Verizon Communications</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer class="mt-16 text-center text-gh_dim text-sm fade-in-section">
+            <p>© 2026 Mary McHale. Professional Portfolio.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+
+            // MAP LOGIC
+            var map = L.map('regionMap').setView([39.6, -76.0], 6);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 19
+            }).addTo(map);
+
+            var northMarker = L.circleMarker([40.1, -75.1], { color: '#58a6ff', fillColor: '#58a6ff', fillOpacity: 0.9, radius: 15, weight: 2 }).addTo(map);
+            northMarker.bindPopup(`<h5 class="font-bold">Mid-Atlantic North</h5><ul class="text-xs"><li>NJ, PA, DE</li><li>Headcount: 4,535</li></ul>`);
+
+            var southMarker = L.circleMarker([39.0, -76.8], { color: '#238636', fillColor: '#238636', fillOpacity: 0.9, radius: 15, weight: 2 }).addTo(map);
+            southMarker.bindPopup(`<h5 class="font-bold">Mid Atlantic South</h5><ul class="text-xs"><li>MD, DC, VA</li><li>Headcount: 2,975</li></ul>`);
+
+            // CHART LOGIC
+            const trace1 = {
+                x: ['Employees<br>Supported', 'Hires<br>Onboarded', 'Leadership<br>Effectiveness'], 
+                y: [8000, 900, 550],
+                type: 'bar',
+                marker: { color: ['#238636', '#58a6ff', '#a371f7'] },
+                text: ['8,000+', '900+', '550+'],
+                textposition: 'auto',
+                hoverinfo: 'none'
+            };
+            Plotly.newPlot('impactChart', [trace1], {
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                font: { color: '#c9d1d9' },
+                margin: { t: 10, b: 40, l: 40, r: 10 },
+                xaxis: { showgrid: false },
+                yaxis: { gridcolor: '#30363d' }
+            }, {responsive: true, displayModeBar: false});
+        });
+    </script>
+</body>
+</html>
