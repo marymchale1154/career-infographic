@@ -24,6 +24,9 @@
                         gh_text: '#c9d1d9',    
                         gh_dim: '#8b949e',     
                         gh_green: '#238636'    
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
                     }
                 }
             }
@@ -31,14 +34,24 @@
     </script>
 
     <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0d1117; }
+        ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #58a6ff; }
+
         .fade-in-section {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         .fade-in-section.is-visible { opacity: 1; transform: none; }
+
         .timeline-line::before {
             content: ''; position: absolute; top: 0; bottom: 0; left: 15px; width: 2px; background: #30363d; z-index: 0;
+        }
+
+        .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+            background: #161b22; color: #c9d1d9; border: 1px solid #30363d; border-radius: 6px;
         }
     </style>
 </head>
@@ -47,52 +60,70 @@
     <div class="max-w-6xl mx-auto px-6 py-12">
 
         <header class="fade-in-section mb-12 border-b border-gh_border pb-10">
-           <div class="w-full h-96 rounded-t-lg relative overflow-hidden bg-slate-800">
-                <div class="absolute inset-0 bg-cover bg-center opacity-60" style="background-image: url('skyline.png');"></div>
+           <div class="w-full h-96 rounded-t-lg relative overflow-hidden group">
+                <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('skyline.png?q=80&w=2070&auto=format&fit=crop');"></div>
+                <div class="absolute inset-0 bg-black/40"></div>
             </div>
 
             <div class="relative flex justify-center -mt-14 mb-6 z-10">
-                <img src="Sept2025Profile.jpg" alt="Mary McHale " class="w-28 h-28 rounded-full border-4 border-gh_bg shadow-xl object-cover">
+                <img src="Sept2025Profile.jpg" alt="Mary McHale" class="w-28 h-28 rounded-full border-4 border-gh_bg shadow-xl object-cover">
             </div>
 
             <div class="text-center px-4">
-                <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Mary McHale </h1>
-                <h2 class="text-xl md:text-2xl text-gh_blue font-medium mb-6">Senior HR Business Partner | Workforce Strategy | People Analytics & Organizational Effectiveness </h2>
+                <h1 class="text-4xl md:text-5xl font-bold text-white tracking-tight mb-2">Mary McHale</h1>
+                <h2 class="text-xl md:text-2xl text-gh_blue font-medium mb-6">Senior HR Business Partner | Workforce Strategy | People Analytics & Organizational Effectiveness</h2>
                 
                 <div class="flex flex-wrap justify-center gap-6 text-gh_dim text-sm mb-8">
-                    <span class="flex items-center gap-2"><i class="fas fa-map-marker-alt"></i> LaGrange, GA [cite: 54]</span>
+                    <span class="flex items-center gap-2"><i class="fas fa-map-marker-alt"></i> LaGrange, GA</span>
                     <a href="mailto:marymchale1154@gmail.com" class="flex items-center gap-2 hover:text-gh_blue transition">
-                        <i class="fas fa-envelope"></i> marymchale1154@gmail.com [cite: 55]
+                        <i class="fas fa-envelope"></i> marymchale1154@gmail.com
                     </a>
                     <a href="https://www.linkedin.com/in/marytmchale" target="_blank" class="flex items-center gap-2 hover:text-gh_blue transition">
-                        <i class="fab fa-linkedin"></i> LinkedIn [cite: 54]
+                        <i class="fab fa-linkedin"></i> LinkedIn Profile
                     </a>
                 </div>
             </div>
         </header>
 
         <section class="fade-in-section bg-gh_card border border-gh_border rounded-lg p-8 shadow-sm mb-12">
-            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                <i class="fas fa-user-tie text-gh_blue"></i> Professional Summary [cite: 56]
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <i class="fas fa-user-tie text-gh_blue"></i> Professional Summary
             </h3>
             <p class="text-gh_text leading-relaxed">
-                Strategic Senior HR Business Partner with 20+ years of progressive HR experience driving people strategy and organizational effectiveness in large-scale, matrixed environments[cite: 57]. 
-                Proven expertise supporting Digital Technology, Engineering, IT/digital software, and technical field operations. 
-                Adept at leveraging workforce analytics and AI-powered tools to guide data-driven decision-making and influence senior leadership[cite: 59, 61].
+                Strategic Senior HR Business Partner with 20+ years of progressive HR experience driving people strategy and organizational effectiveness in large-scale, matrixed environments. Proven expertise in talent management, succession planning, and organizational design, supporting Digital Technology, Engineering, and IT/digital software client groups. Skilled at leveraging workforce analytics and AI-powered tools to influence senior leadership (VP/Director level) and align HR priorities with complex business objectives.
             </p>
         </section>
 
         <section class="fade-in-section mb-16">
-            <h3 class="text-xl font-bold text-white mb-6 border-b border-gh_border pb-2">Core Competencies [cite: 63]</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-gh_card border border-gh_border p-3 rounded text-sm text-gh_blue text-center">Talent Management [cite: 64]</div>
-                <div class="bg-gh_card border border-gh_border p-3 rounded text-sm text-gh_blue text-center">Organizational Design [cite: 64]</div>
-                <div class="bg-gh_card border border-gh_border p-3 rounded text-sm text-gh_blue text-center">Change Management [cite: 64]</div>
-                <div class="bg-gh_card border border-gh_border p-3 rounded text-sm text-gh_blue text-center">Leadership Coaching [cite: 64]</div>
-                <div class="bg-gh_card border border-gh_border p-3 rounded text-sm text-gh_blue text-center">Workforce Planning </div>
-                <div class="bg-gh_card border border-gh_border p-3 rounded text-sm text-gh_blue text-center">Workday HCM </div>
-                <div class="bg-gh_card border border-gh_border p-3 rounded text-sm text-gh_blue text-center">Generative AI </div>
-                <div class="bg-gh_card border border-gh_border p-3 rounded text-sm text-gh_blue text-center">Compensation Modeling [cite: 65]</div>
+            <h3 class="text-xl font-bold text-white mb-6 border-b border-gh_border pb-2">Core Competencies</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gh_card border border-gh_border rounded-lg p-5">
+                    <h4 class="text-gh_blue font-bold mb-4 flex items-center gap-2"><i class="fas fa-chess"></i> Strategic HR</h4>
+                    <ul class="text-sm space-y-2">
+                        <li>Organizational Design & Effectiveness</li>
+                        <li>Talent Management & Succession</li>
+                        <li>Change Management Facilitation</li>
+                        <li>Executive Communication & Influencing</li>
+                    </ul>
+                </div>
+                <div class="bg-gh_card border border-gh_border rounded-lg p-5">
+                    <h4 class="text-gh_blue font-bold mb-4 flex items-center gap-2"><i class="fas fa-chart-line"></i> Data & Analytics</h4>
+                    <ul class="text-sm space-y-2">
+                        <li>Workforce Planning & Analytics</li>
+                        <li>Compensation & Incentive Modeling</li>
+                        <li>Advanced Excel & Data Modeling</li>
+                        <li>Generative AI (Claude, Gemini)</li>
+                    </ul>
+                </div>
+                <div class="bg-gh_card border border-gh_border rounded-lg p-5">
+                    <h4 class="text-gh_blue font-bold mb-4 flex items-center gap-2"><i class="fas fa-users"></i> Operations & Compliance</h4>
+                    <ul class="text-sm space-y-2">
+                        <li>Policy Compliance & Employee Relations</li>
+                        <li>High-Volume Talent Acquisition</li>
+                        <li>Workday HCM Implementation</li>
+                        <li>HR Center of Excellence Collaboration</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -101,53 +132,47 @@
             <div class="lg:col-span-7 space-y-12">
                 
                 <section class="fade-in-section">
-                    <h3 class="text-2xl font-bold text-white mb-6 border-b border-gh_border pb-2">Certifications [cite: 105]</h3>
-                    <div class="grid grid-cols-1 gap-4">
+                    <h3 class="text-2xl font-bold text-white mb-6 border-b border-gh_border pb-2">Certifications</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-gh_card border border-gh_border rounded-lg p-4 flex items-center gap-4">
+                            <i class="fas fa-robot text-gh_blue fa-lg"></i>
+                            <div>
+                                <div class="text-white font-bold text-sm">Google AI Professional</div>
+                                <div class="text-xs text-gh_dim">AI-Powered HR Strategy</div>
+                            </div>
+                        </div>
                         <div class="bg-gh_card border border-gh_border rounded-lg p-4 flex items-center gap-4">
                             <i class="fas fa-certificate text-gh_blue fa-lg"></i>
                             <div>
-                                <div class="text-white font-bold">Google AI Professional Certification </div>
-                                <div class="text-xs text-gh_dim">Advanced proficiency in AI-driven HR solutions </div>
-                            </div>
-                        </div>
-                        <div class="bg-gh_card border border-gh_border rounded-lg p-4 flex items-center gap-4">
-                            <i class="fas fa-shield-alt text-gh_blue fa-lg"></i>
-                            <div>
-                                <div class="text-white font-bold">SHRM Workplace Investigations Credential </div>
-                                <div class="text-xs text-gh_dim">Issued February 2026 </div>
-                            </div>
-                        </div>
-                        <div class="bg-gh_card border border-gh_border rounded-lg p-4 flex items-center gap-4">
-                            <i class="fas fa-id-card text-gh_dim fa-lg"></i>
-                            <div>
-                                <div class="text-white font-bold">Professional in Human Resources (PHR) [cite: 108]</div>
-                                <div class="text-xs text-gh_dim">HRCI - Reinstatement in Progress [cite: 108]</div>
+                                <div class="text-white font-bold text-sm">SHRM Investigations</div>
+                                <div class="text-xs text-gh_dim">Issued February 2026</div>
                             </div>
                         </div>
                     </div>
                 </section>
 
                 <section class="fade-in-section">
-                    <h3 class="text-2xl font-bold text-white mb-8 border-b border-gh_border pb-2">Professional Experience [cite: 67]</h3>
+                    <h3 class="text-2xl font-bold text-white mb-8 border-b border-gh_border pb-2">Professional Experience</h3>
+                    
                     <div class="relative timeline-line pl-4 space-y-10">
                         
                         <div class="relative pl-8">
                             <div class="absolute left-0 top-1 w-8 h-8 bg-gh_blue rounded-full border-4 border-gh_bg flex items-center justify-center z-10">
                                 <i class="fas fa-briefcase text-gh_bg text-xs"></i>
                             </div>
-                            <div class="bg-gh_card border border-gh_border rounded-lg p-6 hover:border-gh_blue transition">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="text-xl font-bold text-white">Senior Manager, HR Business Partner [cite: 69]</h4>
-                                    <span class="text-sm text-gh_blue font-mono bg-gh_border px-2 py-1 rounded">2021 – 2025 </span>
+                            <div class="bg-gh_card border border-gh_border rounded-lg p-6 hover:border-gh_blue transition duration-300">
+                                <div class="flex flex-col md:flex-row justify-between md:items-start mb-2">
+                                    <h4 class="text-xl font-bold text-white">Senior Manager, HR Business Partner</h4>
+                                    <span class="text-sm text-gh_blue font-mono bg-gh_border px-2 py-1 rounded">2021 – 2025</span>
                                 </div>
-                                <p class="text-gh_dim mb-4 italic">Verizon Communications | Ellicott City, MD [cite: 68]</p>
+                                <p class="text-gh_dim mb-4 italic">Verizon Communications | Ellicott City, MD</p>
                                 <ul class="list-disc list-outside ml-4 space-y-2 text-sm">
-                                    <li>Partnered with VPs and Directors to activate people strategies for 8,000+ employees in Digital Tech and Engineering.</li>
-                                    <li>Directed annual talent management and succession planning, identifying high-potential talent for critical roles[cite: 72].</li>
-                                    <li>Led organizational design initiatives, partnering with Finance to govern headcount and optimize team structures.</li>
-                                    <li>Acted as Change Champion for enterprise-wide Workday HCM implementation and UAT[cite: 74, 75].</li>
-                                    <li>Engineered flexible compensation forecasting tools using Advanced Excel to model variable pay for 550+ leaders[cite: 79].</li>
-                                    <li>Led executive Culture Alliance, reducing regrettable attrition through data-driven cultural interventions[cite: 77, 78].</li>
+                                    <li>Strategic HRBP for 8,000+ employees across Digital Technology, Engineering, and IT/digital software groups.</li>
+                                    <li>Directed annual talent management and succession planning reviews to build robust critical role pipelines.</li>
+                                    <li>Led organizational design and workforce planning, partnering with Finance to govern headcount and optimize structures.</li>
+                                    <li>Change Champion for enterprise-wide Workday HCM implementation, performing UAT and driving adoption.</li>
+                                    <li>Engineered compensation forecasting tools using Advanced Excel to model variable pay for 550+ management leaders.</li>
+                                    <li>Led executive Culture Alliance, using survey data to increase engagement and reduce regrettable attrition.</li>
                                 </ul>
                             </div>
                         </div>
@@ -156,17 +181,17 @@
                             <div class="absolute left-0 top-1 w-8 h-8 bg-gh_border rounded-full border-4 border-gh_bg flex items-center justify-center z-10">
                                 <i class="fas fa-history text-gh_dim text-xs"></i>
                             </div>
-                            <div class="bg-gh_card border border-gh_border rounded-lg p-6 hover:border-gh_blue transition">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="text-lg font-bold text-white">Manager, HR Business Partner [cite: 83]</h4>
-                                    <span class="text-sm text-gh_dim font-mono bg-gh_border px-2 py-1 rounded">2019 – 2021 [cite: 84]</span>
+                            <div class="bg-gh_card border border-gh_border rounded-lg p-6 hover:border-gh_blue transition duration-300">
+                                <div class="flex flex-col md:flex-row justify-between md:items-start mb-2">
+                                    <h4 class="text-lg font-bold text-white">Manager, HR Business Partner</h4>
+                                    <span class="text-sm text-gh_dim font-mono bg-gh_border px-2 py-1 rounded">2019 – 2021</span>
                                 </div>
-                                <p class="text-gh_dim mb-4 italic">Verizon Communications [cite: 68]</p>
+                                <p class="text-gh_dim mb-4 italic">Verizon Communications</p>
                                 <ul class="list-disc list-outside ml-4 space-y-2 text-sm">
-                                    <li>Translated workforce metrics and analytics into actionable business strategies for Executive Leadership[cite: 85].</li>
-                                    <li>Identified workforce risks through complex investigations and proactive manager coaching[cite: 86].</li>
-                                    <li>Partnered with Labor Relations to address concerns for a large union-represented workforce[cite: 87].</li>
-                                    <li>Collaborated with Finance to develop accurate workforce budgets based on staffing forecasts[cite: 88].</li>
+                                    <li>Presented data-driven initiatives to Executive Leadership, translating metrics into actionable business strategies.</li>
+                                    <li>Coached managers and conducted complex workplace investigations to minimize organizational risk.</li>
+                                    <li>Partnered with Labor Relations to address concerns for a large union-represented workforce.</li>
+                                    <li>Collaborated with Finance to develop accurate workforce budgets based on business forecasts.</li>
                                 </ul>
                             </div>
                         </div>
@@ -175,26 +200,49 @@
             </div>
 
             <div class="lg:col-span-5 space-y-8">
+                
                 <div class="fade-in-section bg-gh_card border border-gh_border rounded-lg p-4 shadow-sm">
                     <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider border-b border-gh_border pb-2">Regional Leadership Scope</h4>
-                    <div id="regionMap" class="w-full h-72 rounded border border-gh_border"></div>
+                    <div id="regionMap" class="w-full h-72 rounded border border-gh_border z-0"></div>
+                    <p class="text-xs text-gh_dim mt-2 text-center"><i class="fas fa-mouse-pointer"></i> Click markers for headcount details</p>
                 </div>
 
                 <div class="fade-in-section bg-gh_card border border-gh_border rounded-lg p-4 shadow-sm">
                     <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider border-b border-gh_border pb-2">Impact Metrics</h4>
                     <div id="impactChart" class="w-full h-64"></div>
+                    <p class="text-xs text-gh_dim mt-2 text-center">Key volume metrics from recent roles.</p>
                 </div>
 
                 <div class="fade-in-section bg-gh_card border border-gh_border rounded-lg p-6 shadow-sm">
-                    <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider border-b border-gh_border pb-2">Education [cite: 100]</h4>
+                    <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider border-b border-gh_border pb-2">Education</h4>
                     <div class="mb-4">
-                        <div class="text-white font-bold">M.S. Information Systems [cite: 101]</div>
-                        <div class="text-gh_blue text-sm">Univ. of Maryland, Baltimore County [cite: 102]</div>
+                        <div class="text-white font-bold">M.S. Information Systems</div>
+                        <div class="text-gh_blue text-sm">Univ. of Maryland, Baltimore County</div>
                     </div>
                     <div>
-                        <div class="text-white font-bold">B.S. Information Systems Management [cite: 103]</div>
-                        <div class="text-gh_blue text-sm">Univ. of Maryland University College [cite: 104]</div>
+                        <div class="text-white font-bold">B.S. Information Systems Management</div>
+                        <div class="text-gh_blue text-sm">Univ. of Maryland University College</div>
                     </div>
+                </div>
+
+                <div class="fade-in-section bg-gh_card border border-gh_border rounded-lg p-6 shadow-sm">
+                    <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-wider border-b border-gh_border pb-2">Career Roots</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-gh_green mt-1"></i>
+                            <div>
+                                <div class="text-sm text-white font-semibold">Supervisor - HRIS</div>
+                                <div class="text-xs text-gh_dim">Verizon Communications</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check-circle text-gh_green mt-1"></i>
+                            <div>
+                                <div class="text-sm text-white font-semibold">Sr. Data Analyst - HRIS</div>
+                                <div class="text-xs text-gh_dim">Verizon Communications</div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -207,27 +255,65 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Scroll Animation
+            // Intersection Observer
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
             }, { threshold: 0.1 });
-            document.querySelectorAll('.fade-in-section').forEach(s => observer.observe(s));
+            document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
 
-            // Map Logic (Preserved)
-            var map = L.map('regionMap').setView([39.6, -76.0], 5);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-            L.circleMarker([40.1, -75.1], { color: '#58a6ff', radius: 10 }).addTo(map).bindPopup("Mid-Atlantic North");
-            L.circleMarker([39.0, -76.8], { color: '#238636', radius: 10 }).addTo(map).bindPopup("Mid-Atlantic South");
+            // ==========================================
+            // REVERTED MAP LOGIC (Original Index.html)
+            // ==========================================
+            var map = L.map('regionMap').setView([39.6, -76.0], 6);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors', maxZoom: 19
+            }).addTo(map);
 
-            // Chart Logic (Preserved)
-            const trace = {
-                x: ['Employees', 'Hires', 'Leaders Advised'], 
-                y: [8000, 350, 550], 
-                type: 'bar', marker: { color: '#58a6ff' }
+            const territoryConfig = {
+                "north": { states: ["New Jersey", "Pennsylvania", "Delaware"], color: "#58a6ff", layerGroup: L.layerGroup().addTo(map) },
+                "south": { states: ["Maryland", "Virginia"], color: "#238636", layerGroup: L.layerGroup().addTo(map) }
             };
-            Plotly.newPlot('impactChart', [trace], {
+
+            var northMarker = L.circleMarker([40.1, -75.1], { color: '#58a6ff', fillColor: '#58a6ff', fillOpacity: 0.9, radius: 15, weight: 2 }).addTo(map);
+            northMarker.bindPopup('<div class="font-sans"><h5 class="font-bold">Mid-Atlantic North</h5><ul class="text-xs"><li>States: NJ, PA, DE</li><li>Headcount: 4,535</li></ul></div>');
+
+            var southMarker = L.circleMarker([39.0, -76.8], { color: '#238636', fillColor: '#238636', fillOpacity: 0.9, radius: 15, weight: 2 }).addTo(map);
+            southMarker.bindPopup('<div class="font-sans"><h5 class="font-bold">Mid Atlantic South</h5><ul class="text-xs"><li>States: MD, DC, VA</li><li>Headcount: 2,975</li></ul></div>');
+
+            fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json')
+                .then(r => r.json()).then(data => {
+                    L.geoJSON(data.features.filter(f => [...territoryConfig.north.states, ...territoryConfig.south.states].includes(f.properties.name)), {
+                        style: (f) => {
+                            const isNorth = territoryConfig.north.states.includes(f.properties.name);
+                            const col = isNorth ? territoryConfig.north.color : territoryConfig.south.color;
+                            return { color: col, fillColor: col, weight: 1, fillOpacity: 0.1 };
+                        },
+                        onEachFeature: (f, l) => {
+                            if (territoryConfig.north.states.includes(f.properties.name)) territoryConfig.north.layerGroup.addLayer(l);
+                            else territoryConfig.south.layerGroup.addLayer(l);
+                        }
+                    });
+                    northMarker.bringToFront(); southMarker.bringToFront();
+                });
+
+            // ==========================================
+            // REVERTED PLOTLY LOGIC (Original Index.html)
+            // ==========================================
+            const trace1 = {
+                x: ['Employees<br>Supported', 'Hires<br>Onboarded', 'Leadership<br>Effectiveness'], 
+                y: [8000, 900, 550],
+                type: 'bar',
+                marker: { color: ['#238636', '#58a6ff', '#a371f7'] },
+                text: ['8,000+', '900+', '550+'],
+                textposition: 'auto',
+                hoverinfo: 'none'
+            };
+
+            Plotly.newPlot('impactChart', [trace1], {
                 paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
-                font: { color: '#c9d1d9' }, margin: { t: 10, b: 40, l: 40, r: 10 }
+                font: { color: '#c9d1d9' }, margin: { t: 10, b: 40, l: 40, r: 10 },
+                xaxis: { showgrid: false, zeroline: false },
+                yaxis: { gridcolor: '#30363d' }
             }, {responsive: true, displayModeBar: false});
         });
     </script>
